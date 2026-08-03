@@ -103,7 +103,6 @@ streamlit run app.py
 **Ari Hermawan**
 
 * GitHub: [@Ari-1711](https://www.google.com/search?q=https://github.com/Ari-1711)
-* Live Web App: [Smart Waste Management App](https://smartwastemanagement-bvasn5fbt3szlfmmnvvd6f.streamlit.app/)
 
 ```
 
