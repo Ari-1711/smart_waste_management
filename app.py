@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 import streamlit as st
 from src.predictor import load_model_waste, predict_image
@@ -7,11 +8,15 @@ st.set_page_config(
     page_title="Smart Waste Classifier", page_icon="♻️", layout="centered"
 )
 
+# Hitung path absolut folder root proyek secara dinamis
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "mobilenetv2_waste.keras")
 
-# 2. Load model dengan cache agar tidak re-load saat tombol diklik
+
+# 2. Load model dengan cache
 @st.cache_resource
 def get_model():
-    return load_model_waste("models/mobilenetv2_waste.keras")
+    return load_model_waste(MODEL_PATH)
 
 
 model = get_model()
