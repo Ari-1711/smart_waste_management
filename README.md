@@ -107,15 +107,4 @@ streamlit run app.py
 
 ```
 
----
 
-### Perintah Git untuk Update README ke GitHub
-
-Jalankan perintah ini di terminal untuk langsung memperbarui repositorimu:
-
-```cmd
-git add README.md
-git commit -m "docs: restructure README matching portfolio standard"
-git push origin main
-
-```
