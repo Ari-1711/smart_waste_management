@@ -1,0 +1,12 @@
+# Abaikan semua file/folder di dalam folder data
+data/*
+
+# PENGECUALIAN: Jangan abaikan README.md yang ada di folder data
+!data/raw/README.md
+
+# Abaikan environment & cache
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
