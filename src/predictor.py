@@ -3,29 +3,30 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 
-# Tentukan path default berbasis lokasi file predictor.py
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_MODEL_PATH = os.path.join(BASE_DIR, "models", "mobilenetv2_waste.keras")
 
 
 def load_model_waste(model_path=None):
-    """Memuat model TensorFlow yang sudah dilatih."""
     if model_path is None:
         model_path = DEFAULT_MODEL_PATH
 
-    # Jika path relatif dikirim dari app.py, ubah ke path absolut
     if not os.path.isabs(model_path):
         model_path = os.path.join(BASE_DIR, model_path)
 
     if not os.path.exists(model_path):
-        print(f"[DEBUG ERROR] Model file not found at: {model_path}")
+        print(f"[DEBUG] File fisik TIDAK ADA di path: {model_path}")
         return None
 
     try:
-        model = tf.keras.models.load_model(model_path)
+        # Tambahkan compile=False agar tidak error jika ada custom metric/optimizer dari training
+        model = tf.keras.models.load_model(model_path, compile=False)
+        print(f"[DEBUG] Model berhasil dimuat dari: {model_path}")
         return model
     except Exception as e:
-        print(f"[DEBUG ERROR] Gagal memuat model: {e}")
+        # Tampilkan error sebenarnya di log Streamlit
+        st_error_msg = f"Gagal memuat model TensorFlow: {e}"
+        print(f"[DEBUG ERROR] {st_error_msg}")
         return None
 
 
