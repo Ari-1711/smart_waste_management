@@ -175,6 +175,53 @@ st.markdown(
         font-weight: 600;
     }
 
+    /* Custom Styling Camera Input Mobile-Friendly */
+    [data-testid="stCameraInput"] {
+        width: 100% !important;
+    }
+
+    [data-testid="stCameraInput"] > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 14px !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    [data-testid="stCameraInput"] video {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+    }
+
+    /* Memperbesar dan mempercantik tombol shutter / Take Photo */
+    [data-testid="stCameraInput"] button {
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+        color: #ffffff !important;
+        border: none !important;
+        margin-top: 12px !important;
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3) !important;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        cursor: pointer !important;
+    }
+
+    [data-testid="stCameraInput"] button:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    [data-testid="stCameraInput"] button:active {
+        transform: translateY(1px) !important;
+    }
+
     /* Responsive adjustment */
     @media (max-width: 768px) {
         .confidence-score {
