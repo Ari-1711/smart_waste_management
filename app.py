@@ -3,6 +3,7 @@ from PIL import Image
 import streamlit as st
 import streamlit.components.v1 as components
 from src.predictor import load_model_waste, predict_image
+from camera_input_live import camera_input
 
 # 1. Konfigurasi Halaman Web
 st.set_page_config(
@@ -162,55 +163,6 @@ st.markdown(
         color: #cbd5e1;
     }
 
-    /* Clean Container & Camera Styling */
-    [data-testid="stCameraInput"] {
-        width: 100% !important;
-    }
-
-    [data-testid="stCameraInput"] > div {
-        width: 100% !important;
-        max-width: 100% !important;
-        border-radius: 16px !important;
-        overflow: hidden !important;
-        background: rgba(15, 23, 42, 0.6) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
-        padding: 8px !important;
-    }
-
-    [data-testid="stCameraInput"] video {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 4 / 3 !important;
-        object-fit: cover !important;
-        border-radius: 12px !important;
-    }
-
-    /* Thumb-friendly Shutter Button */
-    [data-testid="stCameraInput"] button {
-        width: 100% !important;
-        padding: 14px 20px !important;
-        font-size: 1rem !important;
-        font-weight: 700 !important;
-        border-radius: 12px !important;
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-        color: #ffffff !important;
-        border: none !important;
-        margin-top: 10px !important;
-        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35) !important;
-        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        cursor: pointer !important;
-    }
-
-    [data-testid="stCameraInput"] button:hover {
-        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45) !important;
-    }
-
-    [data-testid="stCameraInput"] button:active {
-        transform: translateY(1px) !important;
-    }
-
     /* Custom Streamlit Tabs Styling */
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
@@ -253,9 +205,6 @@ st.markdown(
         }
         .result-title {
             font-size: 1.45rem;
-        }
-        [data-testid="stCameraInput"] video {
-            aspect-ratio: 3 / 4 !important;
         }
     }
     </style>
@@ -322,7 +271,9 @@ else:
                     st.error("Gagal membaca file gambar. Silakan coba file lain.")
 
         with tab_camera:
-            camera_file = st.camera_input("Ambil foto secara langsung", key="camera")
+            st.info("💡 **Petunjuk Kamera:** Jika kamera di PC tidak muncul, pastikan izin akses kamera di browser (ikon gembok di URL bar) sudah di-Allow.")
+            with st.container(border=True):
+                camera_file = camera_input("Ambil foto secara langsung", key="camera")
             if camera_file is not None:
                 try:
                     image = Image.open(camera_file).convert("RGB")
