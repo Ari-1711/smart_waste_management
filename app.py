@@ -180,7 +180,11 @@ st.markdown(
         width: 100% !important;
     }
 
-    [data-testid="stCameraInput"] > div {
+    /* Kunci container pembungkus kamera & webcam container */
+    [data-testid="stCameraInput"] > div,
+    [data-testid="stCameraInput"] [data-testid="stCameraInputWebcam"] {
+        height: 500px !important;
+        max-height: 70vh !important;
         width: 100% !important;
         max-width: 100% !important;
         border-radius: 14px !important;
@@ -189,11 +193,11 @@ st.markdown(
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
     }
 
-    /* Membuat area preview kamera lebih tinggi & lega */
+    /* Kunci elemen video internal agar tidak menciut kembali */
     [data-testid="stCameraInput"] video {
+        height: 500px !important;
+        max-height: 70vh !important;
         width: 100% !important;
-        height: 450px !important;
-        max-height: 65vh !important;
         object-fit: cover !important;
         border-radius: 12px !important;
     }
