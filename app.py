@@ -189,9 +189,11 @@ st.markdown(
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
     }
 
+    /* Membuat area preview kamera lebih tinggi & lega */
     [data-testid="stCameraInput"] video {
         width: 100% !important;
-        height: auto !important;
+        height: 450px !important;
+        max-height: 65vh !important;
         object-fit: cover !important;
         border-radius: 12px !important;
     }
