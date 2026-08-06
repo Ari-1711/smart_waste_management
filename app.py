@@ -40,91 +40,101 @@ components.html(
     height=0,
 )
 
-# 2. Custom CSS untuk Styling UI Modern & Responsif
+# 2. Custom Design System: Tinted Dark Eco Theme & Responsive Layout
 st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
+    /* Global Typography & Theme Colors */
     html, body, [class*="css"] {
-        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* Status Pill */
+    .stApp {
+        background-color: #0b131f;
+        color: #f8fafc;
+    }
+
+    /* Top Status Indicator Pill */
     .status-pill {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 4px 12px;
+        gap: 8px;
+        padding: 6px 14px;
         background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(16, 185, 129, 0.25);
-        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #34d399;
         border-radius: 9999px;
-        font-size: 0.82rem;
+        font-size: 0.85rem;
         font-weight: 600;
-        letter-spacing: 0.3px;
-        margin-bottom: 12px;
+        letter-spacing: 0.4px;
+        margin-bottom: 16px;
     }
 
-    /* Result Cards */
+    /* Result Card - Organik (Emerald) */
     .result-card-organic {
-        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        background: linear-gradient(145deg, #065f46 0%, #059669 100%);
+        border: 1px solid rgba(52, 211, 153, 0.3);
         color: #ffffff;
-        padding: 24px;
+        padding: 28px 24px;
         border-radius: 16px;
-        box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
+        box-shadow: 0 16px 32px rgba(5, 150, 105, 0.25);
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* Result Card - Anorganik (Cyan / Indigo) */
     .result-card-inorganic {
-        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        background: linear-gradient(145deg, #1e3a8a 0%, #2563eb 100%);
+        border: 1px solid rgba(96, 165, 250, 0.3);
         color: #ffffff;
-        padding: 24px;
+        padding: 28px 24px;
         border-radius: 16px;
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+        box-shadow: 0 16px 32px rgba(37, 99, 235, 0.25);
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .result-title {
-        font-size: 1.6rem;
-        font-weight: 700;
+        font-size: 1.75rem;
+        font-weight: 800;
         margin: 0 0 6px 0;
         color: #ffffff;
+        letter-spacing: -0.5px;
     }
 
     .confidence-score {
-        font-size: 3rem;
+        font-size: 3.4rem;
         font-weight: 800;
         letter-spacing: -1.5px;
-        line-height: 1.1;
-        margin: 10px 0;
+        line-height: 1;
+        margin: 12px 0 8px 0;
     }
 
     .confidence-label {
-        font-size: 0.88rem;
+        font-size: 0.9rem;
         font-weight: 500;
         opacity: 0.92;
         margin: 0;
     }
 
-    /* Empty state guide card */
+    /* Empty State Guide Card */
     .guide-card {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(15, 23, 42, 0.6);
         border: 1px dashed rgba(255, 255, 255, 0.15);
         border-radius: 16px;
-        padding: 24px;
+        padding: 26px;
         margin-top: 10px;
     }
 
     .guide-step {
         display: flex;
         align-items: flex-start;
-        gap: 12px;
-        margin-bottom: 16px;
+        gap: 14px;
+        margin-bottom: 18px;
     }
 
     .guide-step:last-child {
@@ -132,30 +142,103 @@ st.markdown(
     }
 
     .step-num {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-        width: 26px;
-        height: 26px;
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.4);
+        color: #34d399;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         flex-shrink: 0;
     }
 
     .step-text {
-        font-size: 0.95rem;
+        font-size: 0.98rem;
         line-height: 1.5;
-        opacity: 0.9;
+        color: #cbd5e1;
     }
 
-    /* Keyframes animation */
+    /* Clean Container & Camera Styling */
+    [data-testid="stCameraInput"] {
+        width: 100% !important;
+    }
+
+    [data-testid="stCameraInput"] > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        background: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+        padding: 8px !important;
+    }
+
+    [data-testid="stCameraInput"] video {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+    }
+
+    /* Thumb-friendly Shutter Button */
+    [data-testid="stCameraInput"] button {
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+        color: #ffffff !important;
+        border: none !important;
+        margin-top: 10px !important;
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35) !important;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        cursor: pointer !important;
+    }
+
+    [data-testid="stCameraInput"] button:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45) !important;
+    }
+
+    [data-testid="stCameraInput"] button:active {
+        transform: translateY(1px) !important;
+    }
+
+    /* Custom Streamlit Tabs Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: rgba(15, 23, 42, 0.5);
+        padding: 6px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        height: 44px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #94a3b8;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: rgba(16, 185, 129, 0.15) !important;
+        color: #34d399 !important;
+        border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    }
+
+    /* Keyframes Animation */
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(8px);
+            transform: translateY(10px);
         }
         to {
             opacity: 1;
@@ -163,78 +246,16 @@ st.markdown(
         }
     }
 
-    /* Tab styling customization */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-    }
-
-    .stTabs [data-baseweb="tab"] {
-        height: 46px;
-        white-space: pre-wrap;
-        border-radius: 10px;
-        font-weight: 600;
-    }
-
-    /* Custom Styling Camera Input Mobile-Friendly */
-    [data-testid="stCameraInput"] {
-        width: 100% !important;
-    }
-
-    /* Kunci container pembungkus kamera & webcam container */
-    [data-testid="stCameraInput"] > div,
-    [data-testid="stCameraInput"] [data-testid="stCameraInputWebcam"] {
-        height: 500px !important;
-        max-height: 70vh !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        border-radius: 14px !important;
-        overflow: hidden !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    /* Kunci elemen video internal agar tidak menciut kembali */
-    [data-testid="stCameraInput"] video {
-        height: 500px !important;
-        max-height: 70vh !important;
-        width: 100% !important;
-        object-fit: cover !important;
-        border-radius: 12px !important;
-    }
-
-    /* Memperbesar dan mempercantik tombol shutter / Take Photo */
-    [data-testid="stCameraInput"] button {
-        width: 100% !important;
-        padding: 14px 20px !important;
-        font-size: 1rem !important;
-        font-weight: 700 !important;
-        border-radius: 12px !important;
-        background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-        color: #ffffff !important;
-        border: none !important;
-        margin-top: 12px !important;
-        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3) !important;
-        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        cursor: pointer !important;
-    }
-
-    [data-testid="stCameraInput"] button:hover {
-        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4) !important;
-        transform: translateY(-1px) !important;
-    }
-
-    [data-testid="stCameraInput"] button:active {
-        transform: translateY(1px) !important;
-    }
-
-    /* Responsive adjustment */
+    /* Responsive Adjustments for Mobile Screens */
     @media (max-width: 768px) {
         .confidence-score {
-            font-size: 2.3rem;
+            font-size: 2.6rem;
         }
         .result-title {
-            font-size: 1.35rem;
+            font-size: 1.45rem;
+        }
+        [data-testid="stCameraInput"] video {
+            aspect-ratio: 3 / 4 !important;
         }
     }
     </style>
@@ -277,14 +298,14 @@ if model is None:
         "Pastikan file model Keras sudah berada pada direktori yang benar."
     )
 else:
-    # Main Content Area
-    col_input, col_result = st.columns([1, 1], gap="medium")
+    # Main Content Area Layout (Input vs Result)
+    col_input, col_result = st.columns([1, 1], gap="large")
 
     image = None
 
     with col_input:
         st.subheader("📸 Input Sampah")
-        st.write("Unggah gambar atau gunakan kamera perangkat kamu:")
+        st.write("Unggah foto atau ambil gambar menggunakan kamera perangkat:")
 
         tab_upload, tab_camera = st.tabs(["📁 Upload Foto", "📷 Gunakan Kamera"])
 
