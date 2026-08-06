@@ -3,7 +3,10 @@ from PIL import Image
 import streamlit as st
 import streamlit.components.v1 as components
 from src.predictor import load_model_waste, predict_image
-from camera_input_live import camera_input
+try:
+    from camera_input_live import camera_input
+except ImportError:
+    camera_input = None
 
 # 1. Konfigurasi Halaman Web
 st.set_page_config(
@@ -272,13 +275,16 @@ else:
 
         with tab_camera:
             st.info("💡 **Petunjuk Kamera:** Jika kamera di PC tidak muncul, pastikan izin akses kamera di browser (ikon gembok di URL bar) sudah di-Allow.")
-            with st.container(border=True):
-                camera_file = camera_input("Ambil foto secara langsung", key="camera")
-            if camera_file is not None:
-                try:
-                    image = Image.open(camera_file).convert("RGB")
-                except Exception as e:
-                    st.error("Gagal mengambil foto dari kamera.")
+            if camera_input is None:
+                st.warning("Komponen kamera live sedang dimuat atau belum terpasang. Gunakan tab Upload Foto.")
+            else:
+                with st.container(border=True):
+                    camera_file = camera_input("Ambil foto secara langsung", key="camera")
+                if camera_file is not None:
+                    try:
+                        image = Image.open(camera_file).convert("RGB")
+                    except Exception as e:
+                        st.error("Gagal mengambil foto dari kamera.")
 
         if image is not None:
             st.image(
