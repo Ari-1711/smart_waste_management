@@ -6,4 +6,4 @@ pandas
 scikit-learn
 python-dotenv
 starlette==0.38.6
-streamlit-camera-input-live
+
