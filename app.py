@@ -249,7 +249,7 @@ else:
                 st.error("❌ Gagal menganalisis gambar. Silakan coba unggah ulang.")
         else:
             st.info(
-                "👈 **Langkah Penggunaan:**\n"
+                "**Langkah Penggunaan:**\n"
                 "1. Pilih tab **📁 Upload Foto** atau **📷 Gunakan Kamera** di sebelah kiri.\n"
                 "2. Berikan sampel gambar sampah.\n"
                 "3. Hasil klasifikasi & rekomendasi pengolahan akan langsung muncul di sini!"
