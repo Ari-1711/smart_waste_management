@@ -44,61 +44,123 @@ components.html(
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Card styling */
-    .custom-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    /* Status Pill */
+    .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 12px;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        color: #10b981;
+        border-radius: 9999px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        margin-bottom: 12px;
     }
 
     /* Result Cards */
     .result-card-organic {
-        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
         color: #ffffff;
-        padding: 20px;
+        padding: 24px;
         border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(56, 239, 125, 0.25);
+        box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25);
         text-align: center;
         margin-bottom: 20px;
+        animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .result-card-inorganic {
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
         color: #ffffff;
-        padding: 20px;
+        padding: 24px;
         border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(42, 82, 152, 0.25);
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
         text-align: center;
         margin-bottom: 20px;
+        animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .result-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+        color: #ffffff;
     }
 
     .confidence-score {
-        font-size: 2.8rem;
+        font-size: 3rem;
         font-weight: 800;
-        letter-spacing: -1px;
-        margin: 8px 0;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+        margin: 10px 0;
     }
 
-    .badge-label {
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 50px;
-        font-size: 0.9rem;
+    .confidence-label {
+        font-size: 0.88rem;
+        font-weight: 500;
+        opacity: 0.92;
+        margin: 0;
+    }
+
+    /* Empty state guide card */
+    .guide-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px dashed rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        padding: 24px;
+        margin-top: 10px;
+    }
+
+    .guide-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .guide-step:last-child {
+        margin-bottom: 0;
+    }
+
+    .step-num {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: rgba(255, 255, 255, 0.25);
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+
+    .step-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        opacity: 0.9;
+    }
+
+    /* Keyframes animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Tab styling customization */
@@ -107,19 +169,19 @@ st.markdown(
     }
 
     .stTabs [data-baseweb="tab"] {
-        height: 48px;
+        height: 46px;
         white-space: pre-wrap;
-        border-radius: 12px;
+        border-radius: 10px;
         font-weight: 600;
     }
 
-    /* Responsive adjustment for small screens */
+    /* Responsive adjustment */
     @media (max-width: 768px) {
         .confidence-score {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
         }
-        .custom-card {
-            padding: 16px;
+        .result-title {
+            font-size: 1.35rem;
         }
     }
     </style>
@@ -139,7 +201,8 @@ def get_model():
 
 model = get_model()
 
-# 4. Header & Banner Notifikasi (UI/UX)
+# 4. Header & Status Pill
+st.markdown('<div class="status-pill">⚡ Model Active • MobileNetV2 Ready</div>', unsafe_allow_html=True)
 st.title("♻️ Smart Waste Management System")
 st.caption("Aplikasi AI Berbasis MobileNetV2 untuk Klasifikasi Sampah Organik vs Anorganik")
 
@@ -212,10 +275,9 @@ else:
                 st.markdown(
                     f"""
                     <div class="result-card-organic">
-                        <span class="badge-label">🌱 KLASIFIKASI SAMPAH</span>
-                        <h2 style="margin: 0; color: white;">{label}</h2>
+                        <div class="result-title">🌱 {label}</div>
                         <div class="confidence-score">{confidence:.1f}%</div>
-                        <p style="margin: 0; opacity: 0.9;">Tingkat Keyakinan (Confidence Score)</p>
+                        <p class="confidence-label">Tingkat Keyakinan (Confidence Score)</p>
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -231,10 +293,9 @@ else:
                 st.markdown(
                     f"""
                     <div class="result-card-inorganic">
-                        <span class="badge-label">♻️ KLASIFIKASI SAMPAH</span>
-                        <h2 style="margin: 0; color: white;">{label}</h2>
+                        <div class="result-title">♻️ {label}</div>
                         <div class="confidence-score">{confidence:.1f}%</div>
-                        <p style="margin: 0; opacity: 0.9;">Tingkat Keyakinan (Confidence Score)</p>
+                        <p class="confidence-label">Tingkat Keyakinan (Confidence Score)</p>
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -248,11 +309,24 @@ else:
             else:
                 st.error("❌ Gagal menganalisis gambar. Silakan coba unggah ulang.")
         else:
-            st.info(
-                "**Langkah Penggunaan:**\n"
-                "1. Pilih tab **📁 Upload Foto** atau **📷 Gunakan Kamera** di sebelah kiri.\n"
-                "2. Berikan sampel gambar sampah.\n"
-                "3. Hasil klasifikasi & rekomendasi pengolahan akan langsung muncul di sini!"
+            st.markdown(
+                """
+                <div class="guide-card">
+                    <div class="guide-step">
+                        <div class="step-num">1</div>
+                        <div class="step-text">Pilih tab <b>📁 Upload Foto</b> atau <b>📷 Gunakan Kamera</b> di sebelah kiri.</div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">2</div>
+                        <div class="step-text">Berikan sampel gambar sampah yang ingin dianalisis.</div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-num">3</div>
+                        <div class="step-text">Hasil prediksi AI & rekomendasi pengolahan akan otomatis ditampilkan di sini.</div>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
             )
 
 st.divider()
