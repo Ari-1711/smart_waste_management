@@ -63,7 +63,7 @@ Alur kerja ini menggunakan *backbone* **MobileNetV2**, yang telah dilatih sebelu
 
 ## 🔬 Benchmark Eksperimen & Pertimbangan Teknik (*Engineering Trade-Offs*)
 
-Untuk mengoptimalkan efisiensi pelatihan dan mencegah overfitting, kami melakukan analisis komparatif ketat menggunakan *callback* **Early Stopping** dengan memantau `val_accuracy` (maksimal 25 epoch) serta mengaktifkan parameter `restore_best_weights=True`.
+Seluruh skenario pelatihan dieksekusi dengan konfigurasi hiperparameter dasar: **Batas maksimal 25 epoch**, pengoptimal **Adam**, dan fungsi objektif **Binary Crossentropy**. Untuk mengoptimalkan efisiensi dan mencegah overfitting, kami melakukan analisis komparatif ketat menggunakan *callback* **Early Stopping** dengan memantau `val_accuracy` serta mengaktifkan parameter `restore_best_weights=True`.
 
 ### Analisis *Patience* pada Early Stopping
 

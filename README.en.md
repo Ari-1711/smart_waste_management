@@ -63,7 +63,7 @@ The pipeline employs a **MobileNetV2** backbone, pre-trained on ImageNet. The ba
 
 ## 🔬 Experimental Benchmarks & Engineering Trade-Offs
 
-To optimize training efficiency and prevent overfitting, we conducted a rigorous comparative analysis using the **Early Stopping** callback by monitoring `val_accuracy` (with a maximum limit of 25 epochs) and enabling the `restore_best_weights=True` parameter.
+All training scenarios were executed with a baseline hyperparameter configuration: a **maximum limit of 25 epochs**, the **Adam** optimizer, and the **Binary Crossentropy** objective function. To optimize training efficiency and prevent overfitting, we conducted a rigorous comparative analysis using the **Early Stopping** callback by monitoring `val_accuracy` and enabling the `restore_best_weights=True` parameter.
 
 ### Early Stopping Patience Analysis
 
