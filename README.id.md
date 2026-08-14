@@ -57,18 +57,7 @@ Proyek ini menggunakan **[Waste Classification Data](https://www.kaggle.com/data
 
 Alur kerja ini menggunakan *backbone* **MobileNetV2**, yang telah dilatih sebelumnya dengan ImageNet. Layer dasar dikunci (*frozen*) untuk bertindak sebagai pengekstraksi fitur (feature extractor) yang andal, sementara blok teratas *custom* ditambahkan dan dilatih untuk tugas klasifikasi biner spesifik ini.
 
-```mermaid
-graph TD
-    A[Input Gambar Mentah <br/> 224x224 px] --> B(Preprocessing & Augmentasi);
-    B --> |Flip, Rotate 20%, Zoom 20%, <br/> Contrast 20%, Normalize [-1, 1]| C{MobileNetV2 <br/> Pre-trained ImageNet};
-    C --> |Layer Dasar Frozen| D[GlobalAveragePooling2D];
-    D --> E[Dense Layer <br/> 1 Unit, Sigmoid];
-    E --> F((Skor Probabilitas));
-    F --> |Skor < 0.5| G[Sampah Organik];
-    F --> |Skor >= 0.5| H[Sampah Anorganik];
-    G --> I[Streamlit Web UI];
-    H --> I;
-```
+![Architecture & Workflow Diagram](docs/assets/flow.png)
 
 ---
 

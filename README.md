@@ -57,18 +57,7 @@ This project leverages the prominent **[Waste Classification Data](https://www.k
 
 The pipeline employs a **MobileNetV2** backbone, pre-trained on ImageNet. The base layers are frozen to act as a powerful feature extractor, while a custom top block is appended and trained for this specific binary classification task.
 
-```mermaid
-graph TD
-    A[Raw Image Input <br/> 224x224 px] --> B(Preprocessing & Augmentation);
-    B --> |Flip, Rotate 20%, Zoom 20%, <br/> Contrast 20%, Normalize [-1, 1]| C{MobileNetV2 <br/> Pre-trained ImageNet};
-    C --> |Frozen Base Layers| D[GlobalAveragePooling2D];
-    D --> E[Dense Layer <br/> 1 Unit, Sigmoid];
-    E --> F((Probability Score));
-    F --> |Score < 0.5| G[Organic Waste];
-    F --> |Score >= 0.5| H[Recyclable Waste];
-    G --> I[Streamlit Web UI];
-    H --> I;
-```
+![Architecture & Workflow Diagram](docs/assets/flow.png)
 
 ---
 
