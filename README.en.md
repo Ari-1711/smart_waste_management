@@ -25,6 +25,20 @@
 
 ---
 
+## 📑 Table of Contents
+- [🚀 Executive Summary & Elevator Pitch](#-executive-summary--elevator-pitch)
+- [🗄️ Dataset Citation & Specifications](#️-dataset-citation--specifications)
+- [🧠 Architecture & End-to-End Workflow](#-architecture--end-to-end-workflow)
+- [🔬 Experimental Benchmarks & Engineering Trade-Offs](#-experimental-benchmarks--engineering-trade-offs)
+- [🎯 Model Evaluation](#-model-evaluation)
+- [🔍 Engineering Reflections & Technical Evaluation](#-engineering-reflections--technical-evaluation)
+- [💻 Web App Features & Local Quickstart](#-web-app-features--local-quickstart)
+- [📂 Project Directory Tree](#-project-directory-tree)
+- [👥 Authors, Roles & Contribution Breakdown](#-authors-roles--contribution-breakdown)
+- [🛠️ Tech Stack & Future Roadmap](#️-tech-stack--future-roadmap)
+
+---
+
 ## 🚀 Executive Summary & Elevator Pitch
 
 This project delivers an end-to-end Machine Learning pipeline utilizing Transfer Learning (MobileNetV2) to classify waste into **Organic** and **Recyclable** categories. Built with a focus on real-world applicability and deployment readiness, the model achieves near-production accuracy while maintaining a lightweight footprint suitable for future Edge AI integration. The solution is encapsulated in an interactive Streamlit web application, demonstrating seamless real-time inference and a robust user experience.

@@ -25,6 +25,20 @@
 
 ---
 
+## 📑 Daftar Isi
+- [🚀 Ringkasan Eksekutif & Elevator Pitch](#-ringkasan-eksekutif--elevator-pitch)
+- [🗄️ Spesifikasi & Kutipan Dataset](#️-spesifikasi--kutipan-dataset)
+- [🧠 Arsitektur & Alur Kerja Menyeluruh](#-arsitektur--alur-kerja-menyeluruh)
+- [🔬 Benchmark Eksperimen & Pertimbangan Teknik](#-benchmark-eksperimen--pertimbangan-teknik-engineering-trade-offs)
+- [🎯 Evaluasi Model](#-evaluasi-model)
+- [🔍 Refleksi Rekayasa & Evaluasi Teknis](#-refleksi-rekayasa--evaluasi-teknis)
+- [💻 Fitur Aplikasi Web & Panduan Instalasi Lokal](#-fitur-aplikasi-web--panduan-instalasi-lokal)
+- [📂 Struktur Direktori Proyek](#-struktur-direktori-proyek)
+- [👥 Penulis, Peran & Rincian Kontribusi](#-penulis-peran--rincian-kontribusi)
+- [🛠️ *Tech Stack* & Rencana Pengembangan Masa Depan](#️-tech-stack--rencana-pengembangan-masa-depan)
+
+---
+
 ## 🚀 Ringkasan Eksekutif & Elevator Pitch
 
 Proyek ini menghadirkan alur kerja Machine Learning yang menyeluruh dengan memanfaatkan Transfer Learning (MobileNetV2) untuk mengklasifikasikan limbah menjadi kategori **Organik** dan **Anorganik (Recyclable)**. Dibangun dengan fokus pada penerapan di dunia nyata, model ini mencapai akurasi level produksi dengan tetap mempertahankan jejak komputasi yang ringan agar cocok untuk integrasi *Edge AI* di masa depan. Solusi ini dibungkus dalam aplikasi web interaktif Streamlit, yang mendemonstrasikan inferensi real-time mulus dan pengalaman pengguna yang prima.
