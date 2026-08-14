@@ -94,6 +94,26 @@ The model demonstrates exceptional balance, effectively mitigating the common pi
 
 ---
 
+## 🔍 Engineering Reflections & Technical Challenges (*Lessons Learned*)
+
+This documentation summarizes the technical challenges faced during the development cycle, system compromises taken, and key lessons for future iterations:
+
+### 1. Infrastructure Constraints & Cold-Start Lifecycle (Streamlit Cloud)
+* **Challenge:** Using the free-tier infrastructure on Streamlit Community Cloud causes containers to enter a sleep mode when idle. Consequently, upon initial access (cold-start), the web interface sometimes requires one manual reload for the WebSocket sessions and memory allocation to stabilize.
+* **Lessons & Solution Plan:** Implementing aggressive caching via `@st.cache_resource` for model loading, and planning migration to standalone containerized deployments (Docker) on a VPS or serverless inference architecture (like Google Cloud Run / Hugging Face Spaces) to eliminate wake-up latency.
+
+### 2. Compute Limitations & Epoch Budgeting (Google Colab Free Tier)
+* **Challenge:** Model training was conducted utilizing free T4 GPU accelerators on Google Colab. The 25-epoch limit was enforced as an engineering trade-off between convergence performance and runtime compute quotas. Experiments showed that *Patience 10* secured the best score precisely at the 25th epoch boundary, indicating the model still had potential to reach a lower loss minimum if the epoch limit were extended.
+* **Lessons:** Adaptive learning rate scheduling strategies (like `CosineAnnealing` or `ReduceLROnPlateau`) and mixed precision optimization (fp16) are needed so the model can converge weights faster without relying on a computationally wasteful increase in the number of epochs.
+
+### 3. Dataset Scalability & Class Granularity Limits
+* **Challenge:** The current 22,564-image dataset is restricted to binary classification (*Organic* vs *Recyclable*). Visual variations in backgrounds and lighting conditions in real-world data are highly dynamic, while specific sub-categories are not yet separately identified.
+* **Lessons & Future Potential:**
+  * Expanding the dataset by adding specific waste classes (*Plastic, Paper, Glass, Metal, E-Waste*) to elevate its utility value in industrial recycling systems.
+  * Testing fine-tuning techniques on several top layer blocks of MobileNetV2 (after the initial feature extraction phase) to capture more detailed visual representations in highly complex data.
+
+---
+
 ## 💻 Web App Features & Local Quickstart
 
 The Streamlit application is designed for intuitive interaction and robust error handling.
