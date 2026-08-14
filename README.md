@@ -94,23 +94,26 @@ Model ini mendemonstrasikan keseimbangan luar biasa, secara efektif mencegah bia
 
 ---
 
-## 🔍 Refleksi Rekayasa & Kendala Teknis (*Engineering Challenges & Lessons Learned*)
+## 🔍 Refleksi Rekayasa & Evaluasi Teknis
 
-Dokumentasi ini merangkum tantangan teknis yang dihadapi selama siklus pengembangan, kompromi sistem yang diambil, serta pembelajaran penting untuk iterasi berikutnya:
+Ringkasan kendala teknis, mitigasi yang diterapkan, serta arah pengembangan sistem ke depan:
 
-### 1. Keterbatasan Infrastruktur & Siklus Hidup *Cold-Start* (Streamlit Cloud)
-* **Kendala:** Penggunaan infrastruktur *free-tier* pada Streamlit Community Cloud menyebabkan kontainer masuk ke mode *sleep* saat idle. Akibatnya, pada akses pertama (*cold-start*), antarmuka web terkadang membutuhkan *reload* manual satu kali agar sesi WebSocket dan alokasi memori kembali stabil.
-* **Pembelajaran & Rencana Solusi:** Menerapkan *caching* agresif via `@st.cache_resource` untuk pemuatan model, serta merencanakan migrasi ke kontainer mandiri (*containerized* Docker) berbasis VPS atau arsitektur *serverless inference* (seperti Google Cloud Run / Hugging Face Spaces) untuk menghilangkan latensi *wake-up*.
+### 1. Siklus Hidup *Cold-Start* (Streamlit Cloud)
 
-### 2. Keterbatasan Komputasi & Penentuan *Epoch Budget* (Google Colab Free Tier)
-* **Kendala:** Pelatihan model dilakukan menggunakan akselerator T4 GPU gratis di Google Colab. Batas 25 epoch diterapkan sebagai kompromi (*trade-off*) antara performa konvergensi dan kuota waktu komputasi runtime. Eksperimen menunjukkan *Patience 10* mengamankan skor terbaik tepat di batas epoch 25, yang mengindikasikan bahwa model masih berpotensi mencapai titik *loss* lebih rendah jika batas epoch ditingkatkan.
-* **Pembelajaran:** Diperlukan strategi *learning rate scheduling* adaptif (seperti `CosineAnnealing` atau `ReduceLROnPlateau`) dan optimasi presisi campuran (*mixed precision fp16*) agar model dapat mengonvergensi bobot lebih cepat tanpa bergantung pada penambahan jumlah epoch yang boros komputasi.
+* **Kendala:** Akses pertama membutuhkan *reload* satu kali karena kontainer *free-tier* mengalami hibernasi (*sleep*) saat tidak aktif.
+* **Mitigasi & Solusi:** Menerapkan *caching* model dengan `@st.cache_resource` dan merencanakan migrasi ke arsitektur *containerized* (Docker/Cloud Run) untuk menghilangkan latensi *wake-up*.
 
-### 3. Skalabilitas Dataset & Batasan Granularitas Kelas
-* **Kendala:** Dataset 22.564 citra saat ini masih terbatas pada klasifikasi biner (*Organik* vs *Anorganik/Recyclable*). Variasi visual latar belakang dan kondisi pencahayaan pada data dunia nyata sangat dinamis, sementara sub-kategori spesifik belum teridentifikasi secara terpisah.
-* **Pembelajaran & Potensi ke Depan:** 
-  * Melakukan ekspansi dataset dengan menambahkan kelas limbah spesifik (*Plastik, Kertas, Kaca, Logam, B3/E-Waste*) guna meningkatkan nilai guna pada sistem daur ulang industri.
-  * Menguji teknik *fine-tuning* pada beberapa blok lapisan teratas MobileNetV2 (setelah tahap awal ekstraksi fitur) untuk menangkap representasi visual yang lebih detail pada data dengan tingkat kompleksitas tinggi.
+### 2. Efisiensi Iterasi & Konvergensi Model
+
+* **Konteks:** Pelatihan dibatasi hingga 25 epoch sebagai batas iterasi terkontrol menggunakan GPU T4 di Google Colab.
+* **Temuan:** Model memasuki fase konvergensi stabil pada epoch 15–25. Konfigurasi *Patience 10* mengunci performa optimal (Val Loss 0.1641) dengan peningkatan akurasi marginal hanya 0.04% dibanding Patience 3/7, membuktikan penambahan epoch lebih lanjut tidak lagi efisien secara komputasi.
+
+### 3. Granularitas Kelas & Skalabilitas Data
+
+* **Kendala:** Klasifikasi masih biner (Organik vs Anorganik) dengan variasi dataset (22.564 citra) yang masih terbatas untuk mencakup keragaman limbah dunia nyata.
+* **Pengembangan ke Depan:**
+  * Ekspansi ke multi-kelas spesifik (Plastik, Kertas, Kaca, Logam, B3) untuk mendukung integrasi sistem daur ulang industri.
+  * Eksplorasi *fine-tuning* terarah pada lapisan teratas MobileNetV2 guna meningkatkan akurasi pada variasi objek yang kompleks.
 
 ---
 

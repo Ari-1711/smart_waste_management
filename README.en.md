@@ -94,23 +94,26 @@ The model demonstrates exceptional balance, effectively mitigating the common pi
 
 ---
 
-## 🔍 Engineering Reflections & Technical Challenges (*Lessons Learned*)
+## 🔍 Engineering Reflections & Technical Evaluation
 
-This documentation summarizes the technical challenges faced during the development cycle, system compromises taken, and key lessons for future iterations:
+Summary of technical challenges, applied mitigations, and future system development directions:
 
-### 1. Infrastructure Constraints & Cold-Start Lifecycle (Streamlit Cloud)
-* **Challenge:** Using the free-tier infrastructure on Streamlit Community Cloud causes containers to enter a sleep mode when idle. Consequently, upon initial access (cold-start), the web interface sometimes requires one manual reload for the WebSocket sessions and memory allocation to stabilize.
-* **Lessons & Solution Plan:** Implementing aggressive caching via `@st.cache_resource` for model loading, and planning migration to standalone containerized deployments (Docker) on a VPS or serverless inference architecture (like Google Cloud Run / Hugging Face Spaces) to eliminate wake-up latency.
+### 1. Cold-Start Lifecycle (Streamlit Cloud)
 
-### 2. Compute Limitations & Epoch Budgeting (Google Colab Free Tier)
-* **Challenge:** Model training was conducted utilizing free T4 GPU accelerators on Google Colab. The 25-epoch limit was enforced as an engineering trade-off between convergence performance and runtime compute quotas. Experiments showed that *Patience 10* secured the best score precisely at the 25th epoch boundary, indicating the model still had potential to reach a lower loss minimum if the epoch limit were extended.
-* **Lessons:** Adaptive learning rate scheduling strategies (like `CosineAnnealing` or `ReduceLROnPlateau`) and mixed precision optimization (fp16) are needed so the model can converge weights faster without relying on a computationally wasteful increase in the number of epochs.
+* **Challenge:** Initial access requires a one-time reload because the free-tier container goes into hibernation (sleep) when idle.
+* **Mitigation & Solution:** Implementing model caching with `@st.cache_resource` and planning a migration to a containerized architecture (Docker/Cloud Run) to eliminate wake-up latency.
 
-### 3. Dataset Scalability & Class Granularity Limits
-* **Challenge:** The current 22,564-image dataset is restricted to binary classification (*Organic* vs *Recyclable*). Visual variations in backgrounds and lighting conditions in real-world data are highly dynamic, while specific sub-categories are not yet separately identified.
-* **Lessons & Future Potential:**
-  * Expanding the dataset by adding specific waste classes (*Plastic, Paper, Glass, Metal, E-Waste*) to elevate its utility value in industrial recycling systems.
-  * Testing fine-tuning techniques on several top layer blocks of MobileNetV2 (after the initial feature extraction phase) to capture more detailed visual representations in highly complex data.
+### 2. Iteration Efficiency & Model Convergence
+
+* **Context:** Training was capped at 25 epochs as a controlled iteration limit using a T4 GPU on Google Colab.
+* **Findings:** The model enters a stable convergence phase at epochs 15–25. The *Patience 10* configuration locks in optimal performance (Val Loss 0.1641) with a marginal accuracy increase of only 0.04% compared to Patience 3/7, proving that adding further epochs is no longer computationally efficient.
+
+### 3. Class Granularity & Data Scalability
+
+* **Challenge:** Classification is still binary (Organic vs Recyclable) with a dataset variation (22,564 images) that is still limited to cover the diversity of real-world waste.
+* **Future Development:**
+  * Expansion to specific multi-classes (Plastic, Paper, Glass, Metal, E-Waste) to support integration with industrial recycling systems.
+  * Exploration of targeted fine-tuning on the top layers of MobileNetV2 to improve accuracy on complex object variations.
 
 ---
 
