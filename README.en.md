@@ -75,7 +75,7 @@ To optimize training efficiency and prevent overfitting, we conducted a rigorous
 | **`10`** | **25** | **25** | **93.73%** | **93.88%** | **0.1677** | **0.1641** | **Absolute best performance (lowest validation loss).** |
 
 **Engineering First-Principles Analysis:**
-In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved optimal. Although the accuracy improvement margin from Patience 3 (93.84%) to Patience 10 (93.88%) is only 0.04%, there is a clear engineering trade-off: Patience 3 cuts the duration at epoch 18 which is highly compute-efficient, whereas Patience 10 runs for the full 25 epochs to strictly minimize the validation loss to 0.1641. Patience 10 allows the optimizer (Adam) to navigate local minima more effectively and suppress the loss, resulting in the absolute best model performance.
+In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved to yield the most optimal performance (lowest loss). There is a clear computational trade-off: the accuracy improvement margin from Patience 7 (93.84% at epoch 22 / best epoch 15) to Patience 10 (93.88% at epoch 25) is only 0.04%. This slight 0.04% increase requires full execution up to epoch 25 to strictly minimize the validation loss to 0.1641. Meanwhile, configurations with tighter tolerances (like Patience 3 or 7) are already capable of securing a 93.84% performance earlier, saving compute resources. Ultimately, Patience 10 allows the optimizer (Adam) to navigate local minima more effectively, resulting in the absolute best model performance.
 
 ---
 
