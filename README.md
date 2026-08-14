@@ -55,7 +55,8 @@ Proyek ini menggunakan **[Waste Classification Data](https://www.kaggle.com/data
 
 ## 🧠 Arsitektur & Alur Kerja Menyeluruh
 
-Alur kerja ini menggunakan *backbone* **MobileNetV2**, yang telah dilatih sebelumnya dengan ImageNet. Layer dasar dikunci (*frozen*) untuk bertindak sebagai pengekstraksi fitur (feature extractor) yang andal, sementara blok teratas *custom* ditambahkan dan dilatih untuk tugas klasifikasi biner spesifik ini.
+Alur kerja arsitektur proyek ini dirancang dengan tahapan sistematis sebagai berikut:
+**Preprocessing Citra** ➔ **Transfer Learning MobileNetV2** (Base layers frozen + Custom Top: GAP2D & Sigmoid) ➔ **Pelatihan Eksperimental Max 25 Epoch** (Komparasi Patience 3, 5, 7, 10) ➔ **Seleksi Model Terbaik** (Patience 10) ➔ **Pengujian Citra Baru** ➔ **Integrasi & Deployment Streamlit**.
 
 ![Architecture & Workflow Diagram](docs/assets/flow.png)
 
@@ -69,13 +70,13 @@ Seluruh skenario pelatihan dieksekusi dengan konfigurasi hiperparameter dasar: *
 
 | Patience | Epoch Terhenti | Best Epoch | Train Acc | Val Accuracy | Train Loss | Val Loss | Kesimpulan |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Efisien secara komputasi (hemat ~28% durasi epoch). |
+| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Efisien secara komputasi (mengunci bobot terbaik di epoch 15). |
 | `5` | 16 | 11 | 93.36% | 93.66% | 0.1773 | 0.1716 | Berhenti prematur pada optimum lokal. |
 | `7` | 22 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Stabil, memulihkan bobot yang identik dengan Patience 3. |
 | **`10`** | **25** | **25** | **93.73%** | **93.88%** | **0.1677** | **0.1641** | **Performa terbaik mutlak (loss validasi terendah).** |
 
 **Analisis *First-Principles* Perangkat Lunak:**
-Dalam skenario *Edge AI*, komputasi pelatihan bukan masalah besar dibandingkan latensi inferensi. Namun, selama fase pelatihan, mengatur nilai *patience* ke 10 terbukti menghasilkan performa paling optimal (loss terendah). Terdapat *trade-off* komputasi yang jelas: margin peningkatan akurasi dari Patience 7 (93,84% pada epoch 22 / best epoch 15) ke Patience 10 (93,88% pada epoch 25) hanya sebesar 0,04%. Sedikit kenaikan 0,04% tersebut membutuhkan eksekusi penuh hingga epoch 25 untuk meminimalkan *validation loss* ke 0,1641. Di sisi lain, konfigurasi dengan toleransi lebih ketat (seperti Patience 3 atau 7) sudah mampu mengamankan performa 93,84% secara lebih awal dan hemat komputasi. *Patience* 10 memungkinkan pengoptimal (Adam) untuk menavigasi titik minimum lokal dengan lebih efektif, menghasilkan performa terbaik secara mutlak.
+Dalam skenario *Edge AI*, komputasi pelatihan bukan masalah besar dibandingkan latensi inferensi. Namun, selama fase pelatihan, mengatur nilai *patience* ke 10 terbukti menghasilkan performa paling optimal (loss terendah). Terdapat *trade-off* komputasi yang jelas: margin peningkatan akurasi dari Patience 7 (93.84% pada epoch 22 dengan best epoch 15) ke Patience 10 (93.88% pada epoch 25) hanya sebesar 0.04%. Sedikit peningkatan akurasi tersebut memerlukan eksekusi penuh hingga batas 25 epoch untuk meminimalkan *validation loss* ke 0.1641, sedangkan konfigurasi toleransi lebih ketat (seperti Patience 3 dan 7) sudah berhasil mengunci akurasi 93.84% lebih awal. *Patience* 10 memungkinkan pengoptimal (Adam) untuk menavigasi titik minimum lokal dengan lebih efektif, menghasilkan performa terbaik secara mutlak.
 
 ---
 

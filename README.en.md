@@ -55,7 +55,8 @@ This project leverages the prominent **[Waste Classification Data](https://www.k
 
 ## 🧠 Architecture & End-to-End Workflow
 
-The pipeline employs a **MobileNetV2** backbone, pre-trained on ImageNet. The base layers are frozen to act as a powerful feature extractor, while a custom top block is appended and trained for this specific binary classification task.
+The project's architectural workflow is designed with the following systematic stages:
+**Image Preprocessing** ➔ **Transfer Learning MobileNetV2** (Base layers frozen + Custom Top: GAP2D & Sigmoid) ➔ **Experimental Training Max 25 Epochs** (Comparison of Patience 3, 5, 7, 10) ➔ **Best Model Selection** (Patience 10) ➔ **New Image Inference** ➔ **Streamlit Deployment Integration**.
 
 ![Architecture & Workflow Diagram](docs/assets/flow.png)
 
@@ -69,13 +70,13 @@ All training scenarios were executed with a baseline hyperparameter configuratio
 
 | Patience | Epochs Stopped | Best Epoch | Train Acc | Val Accuracy | Train Loss | Val Loss | Verdict |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Computationally efficient (saves ~28% epoch duration). |
+| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Computationally efficient (locks best weights at epoch 15). |
 | `5` | 16 | 11 | 93.36% | 93.66% | 0.1773 | 0.1716 | Terminated prematurely at a local optimum. |
 | `7` | 22 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Stable, restores identical weights as Patience 3. |
 | **`10`** | **25** | **25** | **93.73%** | **93.88%** | **0.1677** | **0.1641** | **Absolute best performance (lowest validation loss).** |
 
 **Engineering First-Principles Analysis:**
-In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved to yield the most optimal performance (lowest loss). There is a clear computational trade-off: the accuracy improvement margin from Patience 7 (93.84% at epoch 22 / best epoch 15) to Patience 10 (93.88% at epoch 25) is only 0.04%. This slight 0.04% increase requires full execution up to epoch 25 to strictly minimize the validation loss to 0.1641. Meanwhile, configurations with tighter tolerances (like Patience 3 or 7) are already capable of securing a 93.84% performance earlier, saving compute resources. Ultimately, Patience 10 allows the optimizer (Adam) to navigate local minima more effectively, resulting in the absolute best model performance.
+In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved to yield the most optimal performance (lowest loss). There is a clear computational trade-off: the accuracy improvement margin from Patience 7 (93.84% at epoch 22 with best epoch 15) to Patience 10 (93.88% at epoch 25) is only 0.04%. This slight accuracy improvement requires full execution up to the 25-epoch limit to minimize the validation loss to 0.1641, whereas configurations with tighter tolerances (such as Patience 3 and 7) successfully locked in the 93.84% accuracy earlier. Ultimately, Patience 10 allows the optimizer (Adam) to navigate local minima more effectively, resulting in the absolute best model performance.
 
 ---
 
