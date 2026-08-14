@@ -115,7 +115,7 @@ Summary of technical challenges, applied mitigations, and future system developm
 ### 1. Cold-Start Lifecycle (Streamlit Cloud)
 
 * **Challenge:** Initial access requires a one-time reload because the free-tier container goes into hibernation (sleep) when idle.
-* **Mitigation & Solution:** Implementing model caching with `@st.cache_resource` and planning a migration to a containerized architecture (Docker/Cloud Run) to eliminate wake-up latency.
+* **Mitigation & Solution:** We have currently implemented model caching using `@st.cache_resource` as an initial mitigation. For a permanent solution moving forward, a migration to a containerized architecture (Docker/Cloud Run) is planned to completely eliminate wake-up latency.
 
 ### 2. Iteration Efficiency & Model Convergence
 

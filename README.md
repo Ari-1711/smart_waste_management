@@ -115,7 +115,7 @@ Ringkasan kendala teknis, mitigasi yang diterapkan, serta arah pengembangan sist
 ### 1. Siklus Hidup *Cold-Start* (Streamlit Cloud)
 
 * **Kendala:** Akses pertama membutuhkan *reload* satu kali karena kontainer *free-tier* mengalami hibernasi (*sleep*) saat tidak aktif.
-* **Mitigasi & Solusi:** Menerapkan *caching* model dengan `@st.cache_resource` dan merencanakan migrasi ke arsitektur *containerized* (Docker/Cloud Run) untuk menghilangkan latensi *wake-up*.
+* **Mitigasi & Solusi:** Saat ini telah diterapkan mitigasi berupa *caching* model menggunakan `@st.cache_resource`. Sebagai solusi permanen ke depannya, direncanakan migrasi ke arsitektur *containerized* (Docker/Cloud Run) guna mengeliminasi latensi *wake-up* sepenuhnya.
 
 ### 2. Efisiensi Iterasi & Konvergensi Model
 
