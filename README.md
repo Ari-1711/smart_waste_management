@@ -1,5 +1,7 @@
 <div align="center">
 
+[🇬🇧 Read in English](README.md) | [🇮🇩 Baca dalam Bahasa Indonesia](README.id.md)
+
 # ♻️ Smart Waste Management: AI-Powered Classification
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
