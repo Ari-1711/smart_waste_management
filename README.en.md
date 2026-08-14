@@ -63,19 +63,19 @@ The pipeline employs a **MobileNetV2** backbone, pre-trained on ImageNet. The ba
 
 ## 🔬 Experimental Benchmarks & Engineering Trade-Offs
 
-To optimize training efficiency and prevent overfitting, we conducted a rigorous comparative analysis using the **Early Stopping** callback by monitoring `val_loss`. 
+To optimize training efficiency and prevent overfitting, we conducted a rigorous comparative analysis using the **Early Stopping** callback by monitoring `val_accuracy` (with a maximum limit of 25 epochs) and enabling the `restore_best_weights=True` parameter.
 
 ### Early Stopping Patience Analysis
 
-| Patience | Epochs Stopped | Val Accuracy | Val Loss | Compute Efficiency | Verdict |
-| :---: | :---: | :---: | :---: | :---: | :--- |
-| `3` | ~8 | 91.50% | 0.2100 | Very High | Terminated prematurely; under-optimized. |
-| `5` | ~12 | 92.75% | 0.1850 | High | Good baseline, but leaves accuracy on the table. |
-| `7` | ~16 | 93.10% | 0.1780 | Moderate | Diminishing returns begin here. |
-| **`10`** | **~22** | **93.88%** | **0.1641** | **Standard** | **Optimal balance achieved.** |
+| Patience | Epochs Stopped | Best Epoch | Train Acc | Val Accuracy | Train Loss | Val Loss | Verdict |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Computationally efficient (saves ~28% epoch duration). |
+| `5` | 16 | 11 | 93.36% | 93.66% | 0.1773 | 0.1716 | Terminated prematurely at a local optimum. |
+| `7` | 22 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Stable, restores identical weights as Patience 3. |
+| **`10`** | **25** | **25** | **93.73%** | **93.88%** | **0.1677** | **0.1641** | **Absolute best performance (lowest validation loss).** |
 
 **Engineering First-Principles Analysis:**
-In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved optimal. Patience values < 7 saved compute time but sacrificed over 2% in absolute accuracy (a significant margin in production sorting facilities). Patience 10 allowed the optimizer (Adam) to navigate local minima effectively, yielding a robust `0.1641` loss. The marginal cost of ~6 extra epochs was strongly justified by the resulting generalization capability (93.88% accuracy) on unseen data.
+In Edge AI scenarios, training compute is less of a bottleneck than inference latency. However, during the training phase, setting patience to 10 proved optimal. Although the accuracy improvement margin from Patience 3 (93.84%) to Patience 10 (93.88%) is only 0.04%, there is a clear engineering trade-off: Patience 3 cuts the duration at epoch 18 which is highly compute-efficient, whereas Patience 10 runs for the full 25 epochs to strictly minimize the validation loss to 0.1641. Patience 10 allows the optimizer (Adam) to navigate local minima more effectively and suppress the loss, resulting in the absolute best model performance.
 
 ---
 
@@ -86,11 +86,10 @@ The model demonstrates exceptional balance, effectively mitigating the common pi
 ### Classification Report (Validation Set)
 
 | Class | Precision | Recall | F1-Score |
-| :--- | :--- | :--- | :--- |
-| **Organic (O)** | 0.95 | 0.94 | **0.94** |
-| **Recyclable (R)** | 0.93 | 0.94 | **0.94** |
-| *Macro Avg* | *0.94* | *0.94* | *0.94* |
-| *Weighted Avg* | *0.94* | *0.94* | *0.94* |
+| :--- | :---: | :---: | :---: |
+| **Organic (O)** | 0.96 | 0.93 | **0.94** |
+| **Recyclable (R)** | 0.92 | 0.95 | **0.93** |
+| *Macro Avg / Overall* | *0.94* | *0.94* | **0.94** |
 
 ---
 

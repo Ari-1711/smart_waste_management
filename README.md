@@ -63,19 +63,19 @@ Alur kerja ini menggunakan *backbone* **MobileNetV2**, yang telah dilatih sebelu
 
 ## 🔬 Benchmark Eksperimen & Pertimbangan Teknik (*Engineering Trade-Offs*)
 
-Untuk mengoptimalkan efisiensi pelatihan dan mencegah overfitting, kami melakukan analisis komparatif ketat menggunakan *callback* **Early Stopping** dengan memantau `val_loss`.
+Untuk mengoptimalkan efisiensi pelatihan dan mencegah overfitting, kami melakukan analisis komparatif ketat menggunakan *callback* **Early Stopping** dengan memantau `val_accuracy` (maksimal 25 epoch) serta mengaktifkan parameter `restore_best_weights=True`.
 
 ### Analisis *Patience* pada Early Stopping
 
-| Patience | Epoch Terhenti | Val Accuracy | Val Loss | Efisiensi Komputasi | Kesimpulan |
-| :---: | :---: | :---: | :---: | :---: | :--- |
-| `3` | ~8 | 91.50% | 0.2100 | Sangat Tinggi | Berhenti prematur; kurang optimal. |
-| `5` | ~12 | 92.75% | 0.1850 | Tinggi | Baseline yang baik, namun akurasi bisa lebih baik. |
-| `7` | ~16 | 93.10% | 0.1780 | Sedang | *Diminishing returns* mulai terlihat di sini. |
-| **`10`** | **~22** | **93.88%** | **0.1641** | **Standar** | **Keseimbangan optimal tercapai.** |
+| Patience | Epoch Terhenti | Best Epoch | Train Acc | Val Accuracy | Train Loss | Val Loss | Kesimpulan |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `3` | 18 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Efisien secara komputasi (hemat ~28% durasi epoch). |
+| `5` | 16 | 11 | 93.36% | 93.66% | 0.1773 | 0.1716 | Berhenti prematur pada optimum lokal. |
+| `7` | 22 | 15 | 93.36% | 93.84% | 0.1776 | 0.1652 | Stabil, memulihkan bobot yang identik dengan Patience 3. |
+| **`10`** | **25** | **25** | **93.73%** | **93.88%** | **0.1677** | **0.1641** | **Performa terbaik mutlak (loss validasi terendah).** |
 
 **Analisis *First-Principles* Perangkat Lunak:**
-Dalam skenario *Edge AI*, komputasi pelatihan bukan masalah besar dibandingkan latensi inferensi. Namun, selama fase pelatihan, mengatur nilai *patience* ke 10 terbukti paling optimal. Nilai *patience* < 7 memang menghemat waktu komputasi tetapi mengorbankan akurasi absolut hingga >2% (selisih yang signifikan dalam fasilitas penyortiran produksi). *Patience* 10 memungkinkan pengoptimal (Adam) untuk menavigasi titik minimum lokal dengan efektif, menghasilkan skor *loss* tangguh sebesar `0.1641`. Sedikit tambahan ~6 epoch sangat sepadan dengan kemampuan generalisasi (akurasi 93,88%) pada data yang belum pernah dilihat sebelumnya.
+Dalam skenario *Edge AI*, komputasi pelatihan bukan masalah besar dibandingkan latensi inferensi. Namun, selama fase pelatihan, mengatur nilai *patience* ke 10 terbukti paling optimal. Meskipun margin peningkatan akurasi dari Patience 3 (93,84%) ke Patience 10 (93,88%) hanya 0,04%, terdapat *trade-off* engineering yang jelas: Patience 3 memotong durasi di epoch 18 yang sangat menghemat komputasi, sedangkan Patience 10 berjalan penuh 25 epoch untuk benar-benar meminimalkan *validation loss* ke angka 0,1641. *Patience* 10 memungkinkan pengoptimal (Adam) untuk menavigasi titik minimum lokal dengan lebih efektif dan menekan *loss*, menghasilkan performa terbaik secara mutlak.
 
 ---
 
@@ -86,11 +86,10 @@ Model ini mendemonstrasikan keseimbangan luar biasa, secara efektif mencegah bia
 ### Laporan Klasifikasi (Validation Set)
 
 | Kelas | Precision | Recall | F1-Score |
-| :--- | :--- | :--- | :--- |
-| **Organik (O)** | 0.95 | 0.94 | **0.94** |
-| **Anorganik (R)** | 0.93 | 0.94 | **0.94** |
-| *Macro Avg* | *0.94* | *0.94* | *0.94* |
-| *Weighted Avg* | *0.94* | *0.94* | *0.94* |
+| :--- | :---: | :---: | :---: |
+| **Organik (O)** | 0.96 | 0.93 | **0.94** |
+| **Anorganik (R)** | 0.92 | 0.95 | **0.93** |
+| *Macro Avg / Overall* | *0.94* | *0.94* | **0.94** |
 
 ---
 
