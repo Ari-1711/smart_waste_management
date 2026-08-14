@@ -133,16 +133,22 @@ The Streamlit application is designed for intuitive interaction and robust error
 ```text
 smart_waste_management/
 │
-├── app.py                     # Main Streamlit application entry point
+├── .agents/                   # Custom agent skills and configurations
+├── .codex/                    # Hooks configuration for agents
 ├── data/                      # Dataset and processed images folder
-├── src/
-│   └── predictor.py           # Inference logic and image preprocessing functions
+├── docs/                      
+│   └── assets/                # Documentation assets (e.g., flow diagrams)
 ├── models/
 │   └── mobilenetv2_waste.keras # Pre-trained Keras model weights (frozen)
 ├── notebooks/
 │   └── swm_model.ipynb        # Model architecture, training, and evaluation notebook
+├── src/
+│   └── predictor.py           # Inference logic and image preprocessing functions
+├── app.py                     # Main Streamlit application entry point
 ├── requirements.txt           # Project dependencies
-└── README.md                  # Project documentation (You are here)
+├── .gitignore                 # Git ignore rules
+├── README.id.md               # Project documentation (Indonesian version)
+└── README.md                  # Project documentation (English version - You are here)
 ```
 
 ---

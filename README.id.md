@@ -133,16 +133,22 @@ Aplikasi Streamlit dirancang dengan interaksi intuitif serta *error handling* ya
 ```text
 smart_waste_management/
 │
-├── app.py                     # Titik masuk utama aplikasi web Streamlit
-├── data/                      # Folder penyimpan gambar hasil pemrosesan dan dataset
-├── src/
-│   └── predictor.py           # Logika inferensi dan fungsi prapemrosesan gambar
+├── .agents/                   # Konfigurasi skill dan agent kustom
+├── .codex/                    # Konfigurasi hooks untuk agent
+├── data/                      # Folder penyimpan dataset dan gambar hasil pemrosesan
+├── docs/                      
+│   └── assets/                # Aset dokumentasi (contoh: diagram alur)
 ├── models/
 │   └── mobilenetv2_waste.keras # Bobot model Keras yang telah dilatih (frozen)
 ├── notebooks/
 │   └── swm_model.ipynb        # Notebook berisi arsitektur model, pelatihan, dan evaluasi
+├── src/
+│   └── predictor.py           # Logika inferensi dan fungsi prapemrosesan gambar
+├── app.py                     # Titik masuk utama aplikasi web Streamlit
 ├── requirements.txt           # File dependensi proyek
-└── README.md                  # Dokumentasi utama proyek
+├── .gitignore                 # Aturan ignore Git
+├── README.id.md               # Dokumentasi utama proyek (Versi Indonesia - Anda di sini)
+└── README.md                  # Dokumentasi utama proyek (Versi Inggris)
 ```
 
 ---
