@@ -170,8 +170,6 @@ The Streamlit application is designed for intuitive interaction and robust error
 ```text
 smart_waste_management/
 │
-├── .agents/                   # Custom agent skills and configurations
-├── .codex/                    # Hooks configuration for agents
 ├── data/                      # Dataset and processed images folder
 ├── docs/                      
 │   └── assets/                # Documentation assets (e.g., flow diagrams)
@@ -184,6 +182,7 @@ smart_waste_management/
 ├── app.py                     # Main Streamlit application entry point
 ├── requirements.txt           # Project dependencies
 ├── .gitignore                 # Git ignore rules
+├── Project_Summary.md         # Project summary & updates (for Obsidian vault)
 ├── README.en.md               # Project documentation (English version - You are here)
 └── README.md                  # Project documentation (Indonesian version)
 ```

@@ -170,8 +170,6 @@ Aplikasi Streamlit dirancang dengan interaksi intuitif serta *error handling* ya
 ```text
 smart_waste_management/
 │
-├── .agents/                   # Konfigurasi skill dan agent kustom
-├── .codex/                    # Konfigurasi hooks untuk agent
 ├── data/                      # Folder penyimpan dataset dan gambar hasil pemrosesan
 ├── docs/                      
 │   └── assets/                # Aset dokumentasi (contoh: diagram alur)
@@ -184,6 +182,7 @@ smart_waste_management/
 ├── app.py                     # Titik masuk utama aplikasi web Streamlit
 ├── requirements.txt           # File dependensi proyek
 ├── .gitignore                 # Aturan ignore Git
+├── Project_Summary.md         # Rangkuman struktur & pembaruan proyek untuk (Obsidian)
 ├── README.en.md               # Dokumentasi utama proyek (Versi Inggris)
 └── README.md                  # Dokumentasi utama proyek (Versi Indonesia - Anda di sini)
 ```

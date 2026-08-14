@@ -41,7 +41,8 @@ Ini adalah rangkuman otomatis struktur dan isi proyek yang disimpan untuk memori
 - **`data/`**: Direktori dataset Kaggle dan output processing yang digunakan secara luring.
 - **`notebooks/`**: Berisi `swm_model.ipynb` sebagai wadah eksperimen model awal (Training, komparasi Early Stopping, dsb).
 
-## Catatan Tambahan (Kesesuaian `README.md`)
-- `README.md` telah disinkronisasikan dan divalidasi. 
-- Folder `data/` telah ditambahkan ke skema *"Project Directory Tree"* pada `README.md` agar merepresentasikan secara presisi *state* direktori proyek saat ini.
-- Link Github yang Anda ubah menjadi repositori `Ari-1711` sudah tercatat.
+## Pembaruan Rekayasa (*Engineering Updates*) & GitHub Sync
+- **Evaluasi Teknis:** Dokumentasi telah diselaraskan dengan hasil eksperimen riil, di mana konfigurasi *Early Stopping Patience 10* mengunci performa optimal (Val Loss 0.1641, Val Accuracy 93.88%) secara mutlak pada epoch 25.
+- **Struktur Repositori:** Direktori konfigurasi lokal dan *cache* seperti `.agents/`, `.codex/`, dan `.obsidian/` telah secara resmi diabaikan via `.gitignore` (serta *cache* dihapus dari remote) untuk menjaga kebersihan repositori publik.
+- **Arsitektur & Refleksi:** Alur kerja secara presisi mencakup proses Preprocessing, Transfer Learning MobileNetV2, Komparasi Epoch, Pengujian, hingga integrasi Streamlit. Refleksi rekayasa (*cold-start* Streamlit dan batasan komputasi) juga telah didokumentasikan dengan matang.
+- **Bilingual Support:** `README.md` (Bahasa Indonesia) dan `README.en.md` (English) tersinkronisasi 100%.
