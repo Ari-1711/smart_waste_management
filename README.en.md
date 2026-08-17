@@ -34,6 +34,7 @@
 - [🔍 Engineering Reflections & Technical Evaluation](#-engineering-reflections--technical-evaluation)
 - [💻 Web App Features & Local Quickstart](#-web-app-features--local-quickstart)
 - [📂 Project Directory Tree](#-project-directory-tree)
+- [📄 Research Documents & Academic Reports](#-research-documents--academic-reports)
 - [👥 Authors, Roles & Contribution Breakdown](#-authors-roles--contribution-breakdown)
 - [🛠️ Tech Stack & Future Roadmap](#️-tech-stack--future-roadmap)
 
@@ -186,6 +187,19 @@ smart_waste_management/
 ├── README.en.md               # Project documentation (English version - You are here)
 └── README.md                  # Project documentation (Indonesian version)
 ```
+
+---
+
+## 📄 Research Documents & Academic Reports
+
+> [!NOTE]  
+> **Student Group Research Project**  
+> The research paper and experiment report below serve as the academic documentation for a student group assignment at Universitas Mercu Buana.
+
+| Document | Description | Link |
+| :--- | :--- | :--- |
+| **Experiment Report** | Technical Experiment & Testing Report for Smart Waste | [🔗 Open Google Drive](https://drive.google.com/file/d/1lONjC54OEHT3Rxh6g1kip-Bi2xVrbxed/view?usp=sharing) |
+| **Research Paper** | Group Research Paper Manuscript (Student Journal Format) | [🔗 Open Google Drive](https://drive.google.com/file/d/1afSxiAj-aYzVntD2FvPJLu_AG44tlD1O/view?usp=sharing) |
 
 ---
 

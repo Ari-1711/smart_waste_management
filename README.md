@@ -34,6 +34,7 @@
 - [🔍 Refleksi Rekayasa & Evaluasi Teknis](#-refleksi-rekayasa--evaluasi-teknis)
 - [💻 Fitur Aplikasi Web & Panduan Instalasi Lokal](#-fitur-aplikasi-web--panduan-instalasi-lokal)
 - [📂 Struktur Direktori Proyek](#-struktur-direktori-proyek)
+- [📄 Dokumen Riset & Laporan Akademik](#-dokumen-riset--laporan-akademik)
 - [👥 Penulis, Peran & Rincian Kontribusi](#-penulis-peran--rincian-kontribusi)
 - [🛠️ *Tech Stack* & Rencana Pengembangan Masa Depan](#️-tech-stack--rencana-pengembangan-masa-depan)
 
@@ -186,6 +187,19 @@ smart_waste_management/
 ├── README.en.md               # Dokumentasi utama proyek (Versi Inggris)
 └── README.md                  # Dokumentasi utama proyek (Versi Indonesia - Anda di sini)
 ```
+
+---
+
+## 📄 Dokumen Riset & Laporan Akademik
+
+> [!NOTE]  
+> **Karya Riset Tugas Kelompok Mahasiswa**  
+> Naskah makalah dan laporan eksperimen di bawah ini merupakan dokumentasi riset akademik dari tugas kelompok mahasiswa Universitas Mercu Buana.
+
+| Dokumen | Deskripsi | Tautan |
+| :--- | :--- | :--- |
+| **Laporan Percobaan** | Laporan Eksperimen & Pengujian Teknis Smart Waste | [🔗 Buka Google Drive](https://drive.google.com/file/d/1lONjC54OEHT3Rxh6g1kip-Bi2xVrbxed/view?usp=sharing) |
+| **Makalah Ilmiah** | Naskah Makalah Ilmiah / Paper Riset Kelompok (Format Jurnal Mahasiswa) | [🔗 Buka Google Drive](https://drive.google.com/file/d/1afSxiAj-aYzVntD2FvPJLu_AG44tlD1O/view?usp=sharing) |
 
 ---
 
