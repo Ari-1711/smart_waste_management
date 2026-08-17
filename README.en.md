@@ -36,7 +36,7 @@
 - [📂 Project Directory Tree](#-project-directory-tree)
 - [📄 Research Documents & Academic Reports](#-research-documents--academic-reports)
 - [👥 Authors, Roles & Contribution Breakdown](#-authors-roles--contribution-breakdown)
-- [🛠️ Tech Stack & Future Roadmap](#️-tech-stack--future-roadmap)
+- [🛠️ Future Roadmap](#️-future-roadmap)
 
 ---
 
@@ -232,15 +232,8 @@ This project originated as academic research at **Universitas Mercu Buana** and 
 
 ---
 
-## 🛠️ Tech Stack & Future Roadmap
+## 🛠️ Future Roadmap
 
-**Core Technologies:**
-- **Languages:** Python 3.10+
-- **Deep Learning:** TensorFlow 2.x, Keras, MobileNetV2
-- **Data Processing:** NumPy, Pillow (PIL)
-- **Frontend / Deployment:** Streamlit, Streamlit Community Cloud
-
-**Future Roadmap:**
 1. **Edge Deployment:** Optimize the model utilizing TensorFlow Lite for deployment on resource-constrained Edge IoT devices (e.g., NVIDIA Jetson Nano, Raspberry Pi) integrated with physical sorting bins.
 2. **Multi-Class Expansion:** Expand the dataset and retrain the model to classify sub-categories (e.g., Glass, Plastic, Paper, Metal, E-Waste) to support more granular recycling processes.
 3. **Continuous Learning:** Implement a feedback loop in the web app to collect misclassified images for future model retraining.

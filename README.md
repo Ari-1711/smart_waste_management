@@ -36,7 +36,7 @@
 - [📂 Struktur Direktori Proyek](#-struktur-direktori-proyek)
 - [📄 Dokumen Riset & Laporan Akademik](#-dokumen-riset--laporan-akademik)
 - [👥 Penulis, Peran & Rincian Kontribusi](#-penulis-peran--rincian-kontribusi)
-- [🛠️ *Tech Stack* & Rencana Pengembangan Masa Depan](#️-tech-stack--rencana-pengembangan-masa-depan)
+- [🛠️ Rencana Pengembangan Masa Depan (Roadmap)](#️-rencana-pengembangan-masa-depan-roadmap)
 
 ---
 
@@ -232,15 +232,8 @@ Proyek ini berawal dari riset akademis di **Universitas Mercu Buana** dan dikemb
 
 ---
 
-## 🛠️ *Tech Stack* & Rencana Pengembangan Masa Depan
+## 🛠️ Rencana Pengembangan Masa Depan (*Roadmap*)
 
-**Teknologi Inti:**
-- **Bahasa:** Python 3.10+
-- **Deep Learning:** TensorFlow 2.x, Keras, MobileNetV2
-- **Pemrosesan Data:** NumPy, Pillow (PIL)
-- **Frontend / Deployment:** Streamlit, Streamlit Community Cloud
-
-**Rencana Masa Depan (*Roadmap*):**
 1. **Edge Deployment:** Mengoptimalkan model memanfaatkan TensorFlow Lite untuk di-deploy pada perangkat *Edge IoT* yang terbatas sumber daya (misalnya: NVIDIA Jetson Nano, Raspberry Pi) dan diintegrasikan langsung dengan tempat sampah fisik.
 2. **Ekspansi Multi-Kelas:** Memperluas dataset dan melatih ulang model untuk mengklasifikasikan sub-kategori limbah (contoh: Kaca, Plastik, Kertas, Logam, E-Waste) guna mendukung proses daur ulang yang lebih terperinci.
 3. **Continuous Learning:** Mengimplementasikan lingkaran umpan balik (feedback loop) dalam web app untuk mengumpulkan gambar yang salah diklasifikasikan demi pelatihan ulang model di masa mendatang.
