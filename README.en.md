@@ -207,16 +207,26 @@ smart_waste_management/
 
 This project originated as academic research at **Universitas Mercu Buana** and was subsequently scaled into a production-ready web application.
 
-- **Ari Hermawan** — *Lead ML Engineer & Streamlit Developer*
-  - Designed model architecture, preprocessing, and augmentation pipelines.
-  - Engineered the Early Stopping experimentation framework and trained the model.
-  - Developed, optimized, and deployed the interactive Streamlit web application.
-- **Royhan Achmad** — *Academic Researcher*
-  - Conducted extensive literature reviews and compiled theoretical foundations.
-  - Managed reference formatting and structured the academic report documentation.
-- **Adistya Firdaus** — *Academic Researcher*
-  - Led dataset validation and integrity checks.
-  - Executed comparative reporting and finalized technical documentation.
+### 🚀 Application Development & Deployment (Independent Initiative)
+*Extended development from the research model into a production-ready interactive web interface.*
+
+- **Ari Hermawan** — *Application Developer*
+  - Designed the Streamlit-based interface architecture, integrated the inference model, and managed deployment.
+
+### 📚 Academic Research & Model Experimentation (Team Collaboration Phase)
+*Initial research and Machine Learning modeling experiments based on Google Colab.*
+
+- **Ari Hermawan** — *Technical & ML Engineer*
+  - **Technical & Architecture:** Determined modeling methodology, designed core architecture, established the Early Stopping experimentation framework, and orchestrated model training.
+  - **Module Coordination:** Aligned data preprocessing and evaluation modules developed by team members into a single main pipeline.
+
+- **Royhan Achmad** — *Data Engineer & Researcher*
+  - **Data Exploration & Preprocessing:** Implemented data preprocessing scripts and image/data augmentation pipelines.
+  - **Research Documentation:** Compiled comprehensive literature reviews and theoretical foundations for the scientific report.
+
+- **Adistya Firdaus** — *ML Evaluation & Data Analyst*
+  - **Validation & Metric Testing:** Wrote metric evaluation scripts (accuracy, loss, performance comparison matrix), conducted dataset integrity validation, and compiled experimental result visualization reports.
+
 - **Essy Malay Sari Sakti, S.Kom., M.M.S.I.** — *Advisor / Dosen Pembimbing*
   - Provided strategic guidance, academic oversight, and project validation.
 

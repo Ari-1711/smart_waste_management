@@ -207,16 +207,26 @@ smart_waste_management/
 
 Proyek ini berawal dari riset akademis di **Universitas Mercu Buana** dan dikembangkan lebih lanjut menjadi aplikasi web siap pakai.
 
-- **Ari Hermawan** — *Lead ML Engineer & Streamlit Developer*
-  - Merancang arsitektur model, prapemrosesan (*preprocessing*), dan pipeline augmentasi.
-  - Merancang kerangka percobaan *Early Stopping* dan melatih model.
-  - Mengembangkan, mengoptimalkan, dan melakukan deployment aplikasi web interaktif menggunakan Streamlit.
-- **Royhan Achmad** — *Academic Researcher*
-  - Melakukan tinjauan pustaka secara komprehensif (literature reviews) dan menyusun landasan teoretis.
-  - Mengelola pemformatan referensi dan menyusun dokumentasi laporan akademik.
-- **Adistya Firdaus** — *Academic Researcher*
-  - Memimpin validasi dataset dan pemeriksaan integritas data.
-  - Menjalankan pelaporan komparatif dan merampungkan dokumentasi teknis akhir.
+### 🚀 Pengembangan & Deployment Aplikasi (Inisiatif Mandiri)
+*Pengembangan lanjutan dari hasil riset model menjadi antarmuka web interaktif siap pakai.*
+
+- **Ari Hermawan** — *Application Developer*
+  - Merancang arsitektur antarmuka berbasis Streamlit, mengintegrasikan model inferensi, dan deployment.
+
+### 📚 Riset Akademik & Eksperimen Model (Fase Kolaborasi Tim)
+*Riset awal dan eksperimen pemodelan Machine Learning berbasis Google Colab.*
+
+- **Ari Hermawan** — *Technical & ML Engineer*
+  - **Teknis & Arsitektur:** Menentukan metodologi pemodelan, merancang arsitektur utama, menetapkan kerangka eksperimen Early Stopping, serta mengorkestrasikan pelatihan (model training).
+  - **Koordinasi Modul:** Menyelaraskan modul prapemrosesan data dan modul evaluasi yang dikembangkan oleh anggota tim ke dalam satu pipeline utama.
+
+- **Royhan Achmad** — *Data Engineer & Researcher*
+  - **Eksplorasi Data & Prapemrosesan:** Mengimplementasikan skrip prapemrosesan data (preprocessing) dan pipeline augmentasi gambar/data.
+  - **Dokumentasi Riset:** Menyusun studi pustaka komprehensif dan landasan teoretis untuk laporan ilmiah.
+
+- **Adistya Firdaus** — *ML Evaluation & Data Analyst*
+  - **Validasi & Pengujian Metrik:** Menulis skrip evaluasi metrik (akurasi, loss, matrix perbandingan performa), melakukan validasi integritas dataset, dan menyusun laporan visualisasi hasil eksperimen.
+
 - **Essy Malay Sari Sakti, S.Kom., M.M.S.I.** — *Advisor / Dosen Pembimbing*
   - Memberikan panduan strategis, pengawasan akademik, dan validasi seluruh proyek.
 
