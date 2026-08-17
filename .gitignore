@@ -3,8 +3,18 @@ venv/
 .venv/
 __pycache__/
 *.pyc
-.ipynb_checkpoints/data/ 
+
+# Data & Jupyter
+.ipynb_checkpoints/
+*.tmp
+
+# AI Agents & IDE configs (JANGAN di-push)
 .agents/
 .codex/
 .obsidian/
-*.tmp
+.impeccable/
+.aider/
+.cline/
+.cursor/
+.gemini/
+scratch/
