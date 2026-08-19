@@ -1,7 +1,5 @@
 <div align="center">
 
-[🇮🇩 Baca dalam Bahasa Indonesia](README.md) | [🇬🇧 Read in English](README.en.md)
-
 # ♻️ Smart Waste Management: Klasifikasi Berbasis AI
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
@@ -184,8 +182,7 @@ smart_waste_management/
 ├── requirements.txt           # File dependensi proyek
 ├── .gitignore                 # Aturan ignore Git
 ├── Project_Summary.md         # Rangkuman struktur & pembaruan proyek untuk (Obsidian)
-├── README.en.md               # Dokumentasi utama proyek (Versi Inggris)
-└── README.md                  # Dokumentasi utama proyek (Versi Indonesia - Anda di sini)
+└── README.md                  # Dokumentasi utama proyek
 ```
 
 ---
