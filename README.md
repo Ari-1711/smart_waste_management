@@ -11,7 +11,7 @@
 
 **Aplikasi Web Deep Learning yang Siap untuk Edge AI dalam Pemilahan Otomatis Sampah Organik vs. Anorganik.**
 
-[** Jalankan Live Demo**](https://smartwastemanagement-bvasn5fbt3szlfmmnvvd6f.streamlit.app/)
+[**Jalankan Live Demo**](https://smartwastemanagement-bvasn5fbt3szlfmmnvvd6f.streamlit.app/)
 
 </div>
 
