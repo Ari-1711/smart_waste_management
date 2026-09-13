@@ -240,7 +240,7 @@ with st.expander("⚡ **Petunjuk Server & Koneksi (Mode Sleep / Waking Up)**", e
     st.info(
         "ℹ️ **Informasi Server Waking Up:** Jika server merespons lambat saat pertama dibuka, "
         "hal itu terjadi karena server dalam mode *waking up* (membangunkan model AI dari status sleep).\n\n"
-        "💡 **Petunjuk Koneksi:** Jika aplikasi tidak merespons saat ditinggal lama, "
+        "**Petunjuk Koneksi:** Jika aplikasi tidak merespons saat ditinggal lama, "
         "cukup reload/refresh halaman browser kamu (**F5** atau swipe down di HP)."
     )
 
@@ -249,7 +249,7 @@ st.divider()
 # 5. Penanganan Pengecekan Ketersediaan Model
 if model is None:
     st.error(
-        "❌ **Error Model:** File model tidak ditemukan di `models/mobilenetv2_waste.keras`. "
+        "**Error Model:** File model tidak ditemukan di `models/mobilenetv2_waste.keras`. "
         "Pastikan file model Keras sudah berada pada direktori yang benar."
     )
 else:
@@ -277,7 +277,7 @@ else:
                     st.error("Gagal membaca file gambar. Silakan coba file lain.")
 
         with tab_camera:
-            st.info("💡 **Petunjuk Kamera:** Jika kamera di PC tidak muncul, pastikan izin akses kamera di browser (ikon gembok di URL bar) sudah di-Allow.")
+            st.info(" **Petunjuk Kamera:** Jika kamera di PC tidak muncul, pastikan izin akses kamera di browser (ikon gembok di URL bar) sudah di-Allow.")
             with st.container(border=True):
                 camera_image = st.camera_input("Ambil foto sampah secara langsung")
             
@@ -295,10 +295,10 @@ else:
             )
 
     with col_result:
-        st.subheader("📊 Hasil Analisis AI")
+        st.subheader(" Hasil Analisis AI")
 
         if image is not None:
-            with st.spinner("⚡ AI sedang menganalisis sampel sampah..."):
+            with st.spinner(" AI sedang menganalisis sampel sampah..."):
                 label, confidence, category = predict_image(model, image)
 
             conf_percentage = float(confidence) / 100.0
@@ -339,7 +339,7 @@ else:
                     "- Bersihkan sisa kotoran/cairan sebelum disetorkan ke bank sampah atau daur ulang."
                 )
             else:
-                st.error("❌ Gagal menganalisis gambar. Silakan coba unggah ulang.")
+                st.error("Gagal menganalisis gambar. Silakan coba unggah ulang.")
         else:
             st.markdown(
                 """

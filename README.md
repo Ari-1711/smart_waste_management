@@ -11,7 +11,7 @@
 
 **Aplikasi Web Deep Learning yang Siap untuk Edge AI dalam Pemilahan Otomatis Sampah Organik vs. Anorganik.**
 
-[**🚀 Jalankan Live Demo**](https://smartwastemanagement-bvasn5fbt3szlfmmnvvd6f.streamlit.app/)
+[** Jalankan Live Demo**](https://smartwastemanagement-bvasn5fbt3szlfmmnvvd6f.streamlit.app/)
 
 </div>
 
@@ -23,26 +23,26 @@
 
 ---
 
-## 📑 Daftar Isi
-- [🚀 Ringkasan Eksekutif & Elevator Pitch](#-ringkasan-eksekutif--elevator-pitch)
-- [🗄️ Spesifikasi & Kutipan Dataset](#️-spesifikasi--kutipan-dataset)
-- [🧠 Arsitektur & Alur Kerja Menyeluruh](#-arsitektur--alur-kerja-menyeluruh)
-- [🔬 Benchmark Eksperimen & Pertimbangan Teknik](#-benchmark-eksperimen--pertimbangan-teknik-engineering-trade-offs)
-- [🎯 Evaluasi Model](#-evaluasi-model)
-- [🔍 Refleksi Rekayasa & Evaluasi Teknis](#-refleksi-rekayasa--evaluasi-teknis)
-- [💻 Fitur Aplikasi Web & Panduan Instalasi Lokal](#-fitur-aplikasi-web--panduan-instalasi-lokal)
-- [📂 Struktur Direktori Proyek](#-struktur-direktori-proyek)
-- [📄 Dokumen Riset & Laporan Akademik](#-dokumen-riset--laporan-akademik)
-- [👥 Penulis, Peran & Rincian Kontribusi](#-penulis-peran--rincian-kontribusi)
-- [🛠️ Rencana Pengembangan Masa Depan (Roadmap)](#️-rencana-pengembangan-masa-depan-roadmap)
+## Daftar Isi
+- [ Ringkasan Eksekutif & Elevator Pitch](#-ringkasan-eksekutif--elevator-pitch)
+- [ Spesifikasi & Kutipan Dataset](#️-spesifikasi--kutipan-dataset)
+- [ Arsitektur & Alur Kerja Menyeluruh](#-arsitektur--alur-kerja-menyeluruh)
+- [ Benchmark Eksperimen & Pertimbangan Teknik](#-benchmark-eksperimen--pertimbangan-teknik-engineering-trade-offs)
+- [ Evaluasi Model](#-evaluasi-model)
+- [ Refleksi Rekayasa & Evaluasi Teknis](#-refleksi-rekayasa--evaluasi-teknis)
+- [ Fitur Aplikasi Web & Panduan Instalasi Lokal](#-fitur-aplikasi-web--panduan-instalasi-lokal)
+- [ Struktur Direktori Proyek](#-struktur-direktori-proyek)
+- [ Dokumen Riset & Laporan Akademik](#-dokumen-riset--laporan-akademik)
+- [ Penulis, Peran & Rincian Kontribusi](#-penulis-peran--rincian-kontribusi)
+- [ Rencana Pengembangan Masa Depan (Roadmap)](#️-rencana-pengembangan-masa-depan-roadmap)
 
 ---
 
-## 🚀 Ringkasan Eksekutif & Elevator Pitch
+## Ringkasan Eksekutif & Elevator Pitch
 
 Proyek ini menghadirkan alur kerja Machine Learning yang menyeluruh dengan memanfaatkan Transfer Learning (MobileNetV2) untuk mengklasifikasikan limbah menjadi kategori **Organik** dan **Anorganik (Recyclable)**. Dibangun dengan fokus pada penerapan di dunia nyata, model ini mencapai akurasi level produksi dengan tetap mempertahankan jejak komputasi yang ringan agar cocok untuk integrasi *Edge AI* di masa depan. Solusi ini dibungkus dalam aplikasi web interaktif Streamlit, yang mendemonstrasikan inferensi real-time mulus dan pengalaman pengguna yang prima.
 
-### 📊 Metrik Kinerja Utama
+### Metrik Kinerja Utama
 
 | Metrik | Nilai | Dampak |
 | :--- | :--- | :--- |
@@ -54,7 +54,7 @@ Proyek ini menghadirkan alur kerja Machine Learning yang menyeluruh dengan meman
 
 ---
 
-## 🗄️ Spesifikasi & Kutipan Dataset
+## Spesifikasi & Kutipan Dataset
 
 Proyek ini menggunakan **[Waste Classification Data](https://www.kaggle.com/datasets/techsash/waste-classification-data)** terkemuka dari Kaggle.
 
@@ -66,7 +66,7 @@ Proyek ini menggunakan **[Waste Classification Data](https://www.kaggle.com/data
 
 ---
 
-## 🧠 Arsitektur & Alur Kerja Menyeluruh
+## Arsitektur & Alur Kerja Menyeluruh
 
 Alur kerja arsitektur proyek ini dirancang dengan tahapan sistematis sebagai berikut:
 **Preprocessing Citra** ➔ **Transfer Learning MobileNetV2** (Base layers frozen + Custom Top: GAP2D & Sigmoid) ➔ **Pelatihan Eksperimental Max 25 Epoch** (Komparasi Patience 3, 5, 7, 10) ➔ **Seleksi Model Terbaik** (Patience 10) ➔ **Pengujian Citra Baru** ➔ **Integrasi & Deployment Streamlit**.
@@ -75,7 +75,7 @@ Alur kerja arsitektur proyek ini dirancang dengan tahapan sistematis sebagai ber
 
 ---
 
-## 🔬 Benchmark Eksperimen & Pertimbangan Teknik (*Engineering Trade-Offs*)
+## Benchmark Eksperimen & Pertimbangan Teknik (*Engineering Trade-Offs*)
 
 Seluruh skenario pelatihan dieksekusi dengan konfigurasi hiperparameter dasar: **Batas maksimal 25 epoch**, pengoptimal **Adam**, dan fungsi objektif **Binary Crossentropy**. Untuk mengoptimalkan efisiensi dan mencegah overfitting, kami melakukan analisis komparatif ketat menggunakan *callback* **Early Stopping** dengan memantau `val_accuracy` serta mengaktifkan parameter `restore_best_weights=True`.
 
@@ -93,7 +93,7 @@ Dalam skenario *Edge AI*, komputasi pelatihan bukan masalah besar dibandingkan l
 
 ---
 
-## 🎯 Evaluasi Model
+## Evaluasi Model
 
 Model ini mendemonstrasikan keseimbangan luar biasa, secara efektif mencegah bias yang sering terjadi terhadap kelas mayoritas.
 
@@ -107,7 +107,7 @@ Model ini mendemonstrasikan keseimbangan luar biasa, secara efektif mencegah bia
 
 ---
 
-## 🔍 Refleksi Rekayasa & Evaluasi Teknis
+## Refleksi Rekayasa & Evaluasi Teknis
 
 Ringkasan kendala teknis, mitigasi yang diterapkan, serta arah pengembangan sistem ke depan:
 
@@ -130,7 +130,7 @@ Ringkasan kendala teknis, mitigasi yang diterapkan, serta arah pengembangan sist
 
 ---
 
-## 💻 Fitur Aplikasi Web & Panduan Instalasi Lokal
+## Fitur Aplikasi Web & Panduan Instalasi Lokal
 
 Aplikasi Streamlit dirancang dengan interaksi intuitif serta *error handling* yang tangguh.
 - **Fitur:** Unggah File (JPG/PNG), Input Kamera Langsung, Inferensi *Real-time*, Indikator Keyakinan Visual, Memuat Model dari Cache (`@st.cache_resource`) untuk eksekusi yang cepat.
@@ -164,7 +164,7 @@ Aplikasi Streamlit dirancang dengan interaksi intuitif serta *error handling* ya
 
 ---
 
-## 📂 Struktur Direktori Proyek
+## Struktur Direktori Proyek
 
 ```text
 smart_waste_management/
@@ -187,7 +187,7 @@ smart_waste_management/
 
 ---
 
-## 📄 Dokumen Riset & Laporan Akademik
+## Dokumen Riset & Laporan Akademik
 
 > [!NOTE]  
 > **Karya Riset Tugas Kelompok Mahasiswa**  
@@ -200,17 +200,17 @@ smart_waste_management/
 
 ---
 
-## 👥 Penulis, Peran & Rincian Kontribusi
+## Penulis, Peran & Rincian Kontribusi
 
 Proyek ini berawal dari riset akademis di **Universitas Mercu Buana** dan dikembangkan lebih lanjut menjadi aplikasi web siap pakai.
 
-### 🚀 Pengembangan & Deployment Aplikasi (Inisiatif Mandiri)
+###  Pengembangan & Deployment Aplikasi (Inisiatif Mandiri)
 *Pengembangan lanjutan dari hasil riset model menjadi antarmuka web interaktif siap pakai.*
 
 - **Ari Hermawan** — *Application Developer*
   - Merancang arsitektur antarmuka berbasis Streamlit, mengintegrasikan model inferensi, dan deployment.
 
-### 📚 Riset Akademik & Eksperimen Model (Fase Kolaborasi Tim)
+### Riset Akademik & Eksperimen Model (Fase Kolaborasi Tim)
 *Riset awal dan eksperimen pemodelan Machine Learning berbasis Google Colab.*
 
 - **Ari Hermawan** — *Technical & ML Engineer*
@@ -229,7 +229,7 @@ Proyek ini berawal dari riset akademis di **Universitas Mercu Buana** dan dikemb
 
 ---
 
-## 🛠️ Rencana Pengembangan Masa Depan (*Roadmap*)
+## Rencana Pengembangan Masa Depan (*Roadmap*)
 
 1. **Edge Deployment:** Mengoptimalkan model memanfaatkan TensorFlow Lite untuk di-deploy pada perangkat *Edge IoT* yang terbatas sumber daya (misalnya: NVIDIA Jetson Nano, Raspberry Pi) dan diintegrasikan langsung dengan tempat sampah fisik.
 2. **Ekspansi Multi-Kelas:** Memperluas dataset dan melatih ulang model untuk mengklasifikasikan sub-kategori limbah (contoh: Kaca, Plastik, Kertas, Logam, E-Waste) guna mendukung proses daur ulang yang lebih terperinci.
